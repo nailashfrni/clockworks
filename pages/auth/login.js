@@ -8,12 +8,12 @@ export default function LoginPage() {
     function handleSubmit(e) {
         e.preventDefault()
         fetch('https://clockworks.fly.dev/auth/login', {
-        method: "POST",
-        mode: "cors",
-        body: JSON.stringify({
-          Username: username,
-          Password: password
-        })
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify({
+                Username: username,
+                Password: password
+            })
       }).then(async (response) => {
             let jsonResponse = await response.json();
             secureLocalStorage.setItem("token", jsonResponse.token);

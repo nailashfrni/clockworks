@@ -1,3 +1,4 @@
+import $ from "jquery"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import secureLocalStorage from "react-secure-storage";
@@ -51,8 +52,8 @@ export default function Index() {
             }
 
             // doesnt work
-            document.getElementById("eventId").value = "";
-            document.getElementById("title").value = "";
+            $("#eventId").trigger("reset");
+            $("#title").trigger("reset");
           })
           .catch(function (error) {
             console.log(error);

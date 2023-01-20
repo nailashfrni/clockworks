@@ -11,9 +11,9 @@ export default function RegisterPage() {
             method: "POST",
             mode: "cors",
             body: JSON.stringify({
-            Email: email,
-            Username: username,
-            Password: password
+                Email: email,
+                Username: username,
+                Password: password
             })
       }).then(async (response) => {
             let jsonResponse = await response.json();
