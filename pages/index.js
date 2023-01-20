@@ -13,21 +13,8 @@ export default function Index() {
                 // handle success
                 let jsonResponse = response.data.data;
                 console.log(jsonResponse);
-                
-                if (events.length == 0) {
-                    for (let i = 0; i < jsonResponse.length; i++) {
-                        setEvents(prev => ([
-                            ...prev,
-                            {
-                                id: jsonResponse[i].id,
-                                title: jsonResponse[i].title,
-                                use_whitelist: jsonResponse[i].use_whitelist,
-                                author_username: jsonResponse[i].author_username
-                            }
-                        ]))
-                    }
-                    console.log(events);
-                }
+                setEvents(jsonResponse);
+                console.log(events)
             })
             .catch(function (error) {
                 // handle error
@@ -72,12 +59,37 @@ export default function Index() {
           });
     }   
 
+    function deleteEvent(id) {
+        axios.delete(`https://clockworks.fly.dev/api/event/${id}`, {
+            headers: {
+                "Authorization": `Bearer ${secureLocalStorage.getItem("token")}`
+            }
+        })
+            .then(function (response) {
+                // handle success
+                console.log(response);
+                setEvents(
+                    events.filter(item => item.id !== id)
+                );
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+    }
+
     return (
         <div>
             <h1>Events</h1>
             <ul>
                 {events.map(event => (
-                <li key={event.id}>{event.title}</li>
+                    <li key={event.id}>
+                        <a href={`/event/${event.id}`}>{event.title}</a>
+                        <button 
+                            onClick={(e) => deleteEvent(event.id)}> 
+                                Delete
+                        </button>
+                    </li>
                 ))}
             </ul>
             <br/><br/>

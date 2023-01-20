@@ -8,20 +8,20 @@ export default function RegisterPage() {
     function handleSubmit(e) {
         e.preventDefault()
         fetch('https://clockworks.fly.dev/auth/register', {
-        method: "POST",
-        mode: "cors",
-        body: JSON.stringify({
-          Email: email,
-          Username: username,
-          Password: password
-        })
+            method: "POST",
+            mode: "cors",
+            body: JSON.stringify({
+            Email: email,
+            Username: username,
+            Password: password
+            })
       }).then(async (response) => {
-        let jsonResponse = await response.json();
-        console.log(jsonResponse);
-        alert(jsonResponse.message);
-        if (jsonResponse.message == "Succesfully registered user.") {
-            window.location.href = '/auth/login';
-        }
+            let jsonResponse = await response.json();
+            console.log(jsonResponse);
+            alert(jsonResponse.message);
+            if (jsonResponse.message == "Succesfully registered user.") {
+                window.location.href = '/auth/login';
+            }
       });
     }
 

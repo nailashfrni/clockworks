@@ -15,17 +15,17 @@ export default function LoginPage() {
           Password: password
         })
       }).then(async (response) => {
-        let jsonResponse = await response.json();
-        secureLocalStorage.setItem("token", jsonResponse.token);
-        secureLocalStorage.setItem("username", username);
-        console.log(jsonResponse.message);
-        console.log(secureLocalStorage.getItem("token"));
-        alert(jsonResponse.message);
+            let jsonResponse = await response.json();
+            secureLocalStorage.setItem("token", jsonResponse.token);
+            secureLocalStorage.setItem("username", username);
+            console.log(jsonResponse.message);
+            console.log(secureLocalStorage.getItem("token"));
+            alert(jsonResponse.message);
 
-        if (jsonResponse.message == "Login successful.") {
-            window.location.href = '/';
-        }
-      });
+            if (jsonResponse.message == "Login successful.") {
+                window.location.href = '/';
+            }
+        });
     }
 
     return (
