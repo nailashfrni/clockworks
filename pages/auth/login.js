@@ -29,23 +29,29 @@ export default function LoginPage() {
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>Login</h1>
             <form onSubmit={handleSubmit}>
                 <input 
+                    className="mb-2"
                     type="text"
                     placeholder="Username"
                     onChange={(e) => setUsername(e.target.value)}
-                    value={username}>
+                    value={username} required>
                 </input><br/>
                 <input
+                    className="mb-2"
                     type="password"
                     placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
-                    value={password}>
+                    value={password} required>
                 </input><br/>
-                <button type="submit">Login</button>
+                <button className="btn btn-primary" type="submit">Login</button>
             </form>
+            <br></br>
+            <p>Don't have an account yet?<br></br>
+                <a style={{color: "blue"}} href="/auth/register">Register Here</a>
+            </p>
         </div>
     )
 }

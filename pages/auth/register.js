@@ -26,29 +26,36 @@ export default function RegisterPage() {
     }
 
     return (
-        <div>
+        <div className="container">
             <h1>Register</h1>
             <form onSubmit={handleSubmit}>
                 <input 
+                    className="mb-2"
                     type="email"
                     placeholder="Email"
                     onChange={(e) => setEmail(e.target.value)}
-                    value={email}>
+                    value={email} required>
                 </input><br/>
                 <input 
+                    className="mb-2"
                     type="text"
                     placeholder="Username"
                     onChange={(e) => setUsername(e.target.value)}
-                    value={username}>
+                    value={username} required>
                 </input><br/>
                 <input
+                    className="mb-2"
                     type="password"
                     placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
-                    value={password}>
+                    value={password} required>
                 </input><br/>
-                <button type="submit">Register</button>
+                <button className="btn btn-primary" type="submit">Register</button>
             </form>
+            <br></br>
+            <p>Already have an account?<br></br>
+                <a style={{color: "blue"}} href="/auth/login">Login Here</a>
+            </p>
         </div>
     )
 }

@@ -35,10 +35,10 @@ export default function EventPage() {
         })
     }
     return (
-        <div>
-            Halo, {id.id}
+        <div className="container">
+            <h3>Welcome back{JSONresponse.data? `, ${JSONresponse.data.author_username}`: ""}</h3>
             <h1>{JSONresponse.data? JSONresponse.data.title: "LOADING"}</h1>
-
+            <p>Event ID: {id.id}</p>
             <button onClick={handleButton}>Tes</button>
         </div>
     );
